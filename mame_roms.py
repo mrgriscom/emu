@@ -4,6 +4,7 @@ import collections
 from lxml import etree
 import tempfile
 import shutil
+import itertools
 
 MAME_VERSION = '0.177'
 MAME_PATH = '/home/drew/mame177' #'/mnt/ext/roms/mame/'
@@ -15,7 +16,7 @@ CATLIST_PATH = os.path.join(os.path.dirname(__file__), 'cat32en')
 # Delete these roms from the library
 REMOVE_CATS = [
     'Casino',
-    'Electromechanical',
+    'Electromechanical', # includes physical pinball, slot machines
 ]
 
 # Hide these from the list of playable roms
@@ -51,13 +52,67 @@ WHITELIST_CATS = [
     'Tabletop',
 ]
 
-# TODO load all info upfront
-# name
-# file
-# romdeps
-# chd
-# device deps
-# genre
+# Consolidate (and sanity check) all mame rom metadata
+def load_mame_metadata(xml_index):
+    if xml_index is None:
+        xml_index = mame_roms_xml()
+    files = mame_rom_archives()
+    categories = rom_genres()
+
+    all_info = {}
+    for name, e in sorted(xml_index.iteritems()):
+        info = {}
+        all_info[name] = info
+        info.update({
+            'name': name,
+            'title': e.find('description').text,
+            'cat': categories[name],
+            'device': (e.attrib.get('isdevice') == 'yes'),
+            'bios': (e.attrib.get('isbios') == 'yes'),
+            'em': (e.attrib.get('ismechanical') == 'yes'),
+            'file': (name in files),
+        })
+        info['playable'] = all(not info[k] for k in ('device', 'bios', 'em'))
+        # Note: 'em' not entirely synonymous with Electromechanical category
+
+        #info['functional'] = False
+        # input.players = 0 seems to indicate rom not functional (in addition to non-game devices)
+        # How else to detect non-working games?
+        
+        romof = e.attrib.get('romof')
+        cloneof = e.attrib.get('cloneof')
+        devices = [ch.attrib['name'] for ch in e.findall('device_ref')]
+        info['chd'] = bool(e.findall('disk'))
+        # TODO more CHD validation?
+
+        info['romdeps'] = set(filter(None, [romof, cloneof]))
+        assert len(info['romdeps']) <= 1
+        info['devdeps'] = devices
+        assert all(name not in info[k] for k in ('romdeps', 'devdeps'))
+        if info['device']:
+            assert all(not info[k] for k in ('romdeps', 'devdeps'))
+        # Is valid that rom may have no files (either directly or through dependencies)
+            
+    for name, info in all_info.iteritems():
+        for rd in info['romdeps']:
+            dep = all_info[rd]
+            assert not dep['device']
+            # Chained deps are possible.
+        for dd in info['devdeps']:
+            assert all_info[dd]['device']
+
+    assert all_mame_roms() == set(name for name, info in all_info.iteritems() if not info['device'])
+    assert files == set(name for name, info in all_info.iteritems() if info['file'])
+    
+    return all_info
+    
+# Parse the mame full xml dump
+def load_mame_xml():
+    return etree.parse(os.popen('mame -listxml')).getroot()
+
+# Return mame full rom xml indexed by rom name
+def mame_roms_xml():
+    return dict((e.attrib['name'], e) for e in load_mame_xml())
 
 # List of mame roms that can be launched
 def all_mame_roms():
@@ -98,99 +153,65 @@ def rom_genres():
             genres[rom] = genre
     return genres
 
-# Parse the mame full xml dump
-def load_mame_xml():
-    return etree.parse(os.popen('mame -listxml')).getroot()
 
-# Return mame full rom xml indexed by rom name
-def mame_roms_xml():
-    return dict((e.attrib['name'], e) for e in load_mame_xml())
 
-# Return a map of rom => roms that rom depends on. If filelist passed, dependencies
-# are trimmed to those that exist on disk.
-def rom_dependencies(xml_index, filelist=None):
-    rom_deps = {}
-    for name, e in xml_index.iteritems():
-        deps = set()
-        rom_deps[name] = deps
-        for attr in ('romof', 'cloneof'):
-            if attr in e.attrib:
-                deps.add(e.attrib[attr])
-        deps.update(dev.attrib['name'] for dev in e.findall('device_ref'))
-        assert all(dep != name for dep in deps)
-        assert all(dep in xml_index for dep in deps)
 
-    # TODO need to worry about transitive dependencies?
+# Return list and metadata of all "playable" roms (visible in front-end)
+def playable_roms(all_info, include_hidden=False):
+    CATS = WHITELIST_CATS + (HIDE_CATS if include_hidden else [])    
+    def process(info):
+        if not (info['playable'] and info['cat'] in CATS):
+            return
 
-    if filelist:
-        for name in rom_deps.keys():
-            rom_deps[name] = filter(lambda dep: dep in filelist, rom_deps[name])
-
-    return dict((k, v) for k, v in rom_deps.iteritems() if v)
-
-def verify_roms():
-    output = os.popen('mame -verifyroms -rp "%s"' % MAME_PATH).readlines()
-    return set(ln.split()[1] for ln in output if ln.strip().endswith('is bad'))
+        return {
+            'rom': info['name'],
+            'name': info['title'],
+            'annotations': set(),
+        }
+    return sorted(filter(None, map(process, all_info.values())), key=lambda e: e['name'])
     
 # Remove roms that are in undesired categories and not depended on by any other rom
-def cull_roms(xml_index=None, filelist=None, dry_run=False):
-    if not xml_index:
-        xml_index = mame_roms_xml()
-    if not filelist:
-        filelist = mame_rom_archives()
+def cull_roms(all_info, dry_run=False):
+    filelist = mame_rom_archives()
+    used = set()
+    def mark_used(info):
+        if info['file']:
+            used.add(info['name'])
+        for dep in itertools.chain(info['romdeps'], info['devdeps']):
+            mark_used(all_info[dep])
 
-    rom_deps = rom_dependencies(xml_index, filelist)
-    depended_on = collections.defaultdict(set)
-    for rom, deps in rom_deps.iteritems():
-        for dep in deps:
-            depended_on[dep].add(rom)
-            
-    genres = rom_genres()
-    to_remove = set(rom for rom in xml_index.keys() if genres[rom] in REMOVE_CATS)
-    depended_on_by_keepers = set(rom for rom in to_remove if rom in depended_on and any(d not in to_remove for d in depended_on[rom]))
-    to_remove -= depended_on_by_keepers
-    to_remove_disk = [rom for rom in filelist if rom in to_remove]
+    for rom in playable_roms(all_info, True):
+        mark_used(all_info[rom['rom']])
+    to_remove = sorted(filelist - used)
 
-    if dry_run:
-        return
-
-    before_bad = verify_roms()
-
+    if not dry_run:
+        before_bad = verify_roms()
+        print '%d bad roms to start' % len(before_bad)
+        
     discard_dir = tempfile.mkdtemp()
-    for rom in sorted(to_remove_disk):
-        print 'discarding', rom
-        shutil.move(os.path.join(MAME_PATH, rom + MAME_EXT), discard_dir)
-    print 'discards in', discard_dir
-        
-    after_bad = verify_roms()
-    new_bad = after_bad - before_bad
-    if new_bad:
-        print '!! newly failing roms', new_bad
+    for f in to_remove:
+        print 'discarding', f
+        if not dry_run:
+            shutil.move(os.path.join(MAME_PATH, f + MAME_EXT), discard_dir)
+    print 'discarded %d into %s' % (len(to_remove), discard_dir)
 
-    with open(os.path.join(MAME_PATH, 'VERSION'), 'w') as f:
-        f.write('%s\n' % MAME_VERSION)
+    if not dry_run:
+        after_bad = verify_roms() - set(to_remove)  # This verification pass appears to skip most removed roms
+        new_bad = after_bad - before_bad
+        if new_bad:
+            print '!! newly failing roms', new_bad
 
-def advanced_verify():
-    roms = all_mame_roms()
-    genres = rom_genres()
-    playable_roms = set(r for r in roms if genres[r] not in (REMOVE_CATS + HIDE_CATS))
+        # Tag the archive with mame version
+        with open(os.path.join(MAME_PATH, 'VERSION'), 'w') as f:
+            f.write('%s\n' % MAME_VERSION)
 
-    for rom in sorted(playable_roms):
-        output = os.popen('mame -verifyroms -rp %s %s 2>&1' % (MAME_PATH, rom)).readlines()
-        status_ln = [ln for ln in output if ln.startswith('romset ')][0]
-        if not any(status_ln.strip().endswith(k) for k in ('is good', 'is best available')):
-            print output
-        
-        
-    print len(playable_roms)
-    from pprint import pprint
-    pprint(sorted(playable_roms))
-    
-    
+def verify_roms():
+    # TODO handle rompath + separate chd path -- currently set in mame config
+    output = os.popen('mame -verifyroms').readlines()
+    return set(ln.split()[1] for ln in output if ln.strip().endswith('is bad'))
+
+
 if __name__ == "__main__":
 
     pass
             
-#hide non-playable (bad emul); driver status: preliminary?
-#hide num players: 0
-#isbios/isdevice/ismechanical
