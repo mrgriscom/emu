@@ -1,2 +1,7 @@
 *~
 *.pyc
+
+configs/mame/diff
+configs/mame/nvram
+configs/mame/snap
+configs/mame/sta
