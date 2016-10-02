@@ -12,31 +12,32 @@ ROM_ROOT = '/mnt/ext/roms'
 
 SYSTEMS = {
     '32x': {
-        'emulator': 'kega_fusion',
+        'emulator': 'retroarch-pico',
         'extensions': ['32x'],
     },
     'fds': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-nestopia',
         'extensions': ['fds'],
+        'bios': 'required', # disksys.rom
     },
     'gameboy': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-gambatte',
         'extensions': ['gb'],
     },
     'gamegear': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-genesisplusgx',
         'extensions': ['gg'],
     },
     'gba': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-mgba',
         'extensions': ['gba'],
     },
     'gbc': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-gambatte',
         'extensions': ['gbc'],
     },
     'genesis': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-genesisplusgx',
         'extensions': ['md'],
     },
     'mame': {
@@ -44,53 +45,81 @@ SYSTEMS = {
         'extensions': [],
     },
     'n64': {
-        'emulator': 'mupen64',
+        'emulator': 'retroarch-mupen64',
         'extensions': ['n64'],
     },
     'nes': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-nestopia',
         'extensions': ['nes'],
     },
     'psx': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-mednafen-psx',
         'extensions': ['cue', 'iso'],
+        'bios': 'required', # scph*.bin
     },
     'segacd': {
-        'emulator': 'kega_fusion',
+        'emulator': 'retroarch-genesisplusgx',
         'extensions': ['iso', 'bin'],
     },
     'snes': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-bsnes',
         'extensions': ['sfc'],
+        'bios': 'certain_games', # *.rom
+        # http://emulation.gametechwiki.com/index.php/Emulator_Files#Super_Famicom_.28SNES.29
+        # "SNES Coprocessor ROMs for bsnes"
+
     },
     'turbografx': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-mednafen-pce',
         'extensions': ['pce'],
     },
     'virtualboy': {
-        'emulator': 'mednafen',
+        'emulator': 'retroarch-mednafen-vb',
         'extensions': ['vb'],
     },
 }
 
 EMULATORS = {
-    'mame': {
-        'params': ['-video', 'opengl', '-nofilter', '-rp', '%(romdir)s'],
+    'mame': {},
+    'retroarch-bsnes': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/bsnes_mercury_balanced_libretro.so'],
     },
-    'mednafen': {
-        # too many params; just use .mednafen/mednafen-09x.cfg
-        'audio_lock': True,
+    'retroarch-gambatte': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/gambatte_libretro.so'],
     },
-    'kega_fusion': {
-        'exe': 'kega-fusion',
-        'params': ['-fullscreen'],
-        # audio lock broken
+    'retroarch-genesisplusgx': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/genesis_plus_gx_libretro.so'],
     },
-    'mupen64': {
-        'exe': 'mupen64plus',
-        # fullscreen broken
-        #'params': ['--resolution', '1440x1080'],
-        'compression_retarded': True,
+    'retroarch-mednafen-pce': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/mednafen_pce_fast_libretro.so'],
+    },
+    'retroarch-mednafen-psx': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/mednafen_psx_libretro.so'],
+    },
+    'retroarch-mednafen-vb': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/mednafen_vb_libretro.so'],
+    },
+    'retroarch-mgba': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/mgba_libretro.so'],
+    },
+    'retroarch-mupen64': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/mupen64plus_libretro.so'],
+    },
+    'retroarch-nestopia': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/nestopia_libretro.so'],
+    },
+    'retroarch-pico': {
+        'exe': 'retroarch',
+        'params': ['-L', '/usr/lib/libretro/picodrive_libretro.so'],
     },
 }
 
