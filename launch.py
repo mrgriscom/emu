@@ -59,7 +59,8 @@ SYSTEMS = {
     },
     'segacd': {
         'emulator': 'retroarch-genesisplusgx',
-        'extensions': ['iso', 'bin'],
+        'extensions': ['cue', 'iso'],
+        'bios': 'required', # bios_CD_U.bin
     },
     'snes': {
         'emulator': 'retroarch-bsnes',
@@ -162,6 +163,7 @@ def in_romdir(sys, rom):
 
 def inspect_zip(rom):
     archive = ZipFile(rom)
+    # TODO could be multiple relevant extensions
     return get_ext(archive.namelist()[0])
 
 def match_system(rom):
