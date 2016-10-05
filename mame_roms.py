@@ -7,7 +7,7 @@ import shutil
 import itertools
 
 MAME_VERSION = '0.177'
-MAME_PATH = '/home/drew/mame177' #'/mnt/ext/roms/mame/'
+MAME_PATH = '/mnt/ext/roms/mame/'
 MAME_EXT = '.7z'
 
 # Downloaded from http://www.progettoemma.net/public/cat/cat32en.zip
@@ -53,7 +53,7 @@ WHITELIST_CATS = [
 ]
 
 # Consolidate (and sanity check) all mame rom metadata
-def load_mame_metadata(xml_index):
+def load_mame_metadata(xml_index=None):
     if xml_index is None:
         xml_index = mame_roms_xml()
     files = mame_rom_archives()
