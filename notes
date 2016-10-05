@@ -3,6 +3,8 @@ jstest-gtk for joystick debugging
 logitech f310:
 - switch on back set to X (Xinput)
 
+retroarch config - *both* controllers show as 'logitech f310 (#0)' but they are different!
+
 
 rom sets - No-Intro
 disc sets - redump
