@@ -145,7 +145,7 @@ for system in SYSTEMS:
     e = etree.SubElement(gamelist, 'game')
     etree.SubElement(e, 'path').text = os.path.join('.', os.path.join(system_launch_links_dir, ROULETTE))
     etree.SubElement(e, 'name').text = ' Surprise Me!'
-    etree.SubElement(e, 'image').text = 'x.jpg'
+    #etree.SubElement(e, 'image').text = 'x.jpg'
     
     gamelist_dir = os.path.join(FRONTEND_CONFIG_ROOT, 'gamelists', name)
     os.mkdir(gamelist_dir)
