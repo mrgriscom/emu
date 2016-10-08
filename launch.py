@@ -75,7 +75,9 @@ SYSTEMS = {
         'extensions': ['pce'],
     },
     'virtualboy': {
-        'emulator': 'retroarch-mednafen-vb',
+        'emulator': 'mednafen',
+        # retroarch can't do proper SxS left-eye/right-eye view for 3D tv
+        #'emulator': 'retroarch-mednafen-vb',
         'extensions': ['vb'],
     },
 }
@@ -121,6 +123,9 @@ EMULATORS = {
     'retroarch-pico': {
         'exe': 'retroarch',
         'params': ['-L', '/usr/lib/libretro/picodrive_libretro.so'],
+    },
+    'mednafen': {
+        'audio_lock': True,
     },
 }
 
