@@ -13,3 +13,5 @@ configs/emulationstation/es_systems.cfg
 configs/emulationstation/es_log.txt
 configs/emulationstation/gamelists
 configs/emulationstation/launchlinks
+
+configs/mednafen/sav

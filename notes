@@ -10,8 +10,3 @@ rom sets - No-Intro
 disc sets - redump
 
 
-mednafen virtualboy 3d positioning:
-side by side
-stretch mode 0 to go full manual
-stretch = min(1920/384, 1080/224) / 2
-sep = 1920/2/stretch - 384
