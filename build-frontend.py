@@ -59,6 +59,11 @@ SYSTEMS = [
         'fullname': 'Virtual Boy',
     },
     {
+        'system': 'wii',
+        'fullname': 'Wii',
+        'ext': ['.wad'],
+    },
+    {
         'system': 'gameboy',
         'fullname': 'Game Boy',
         'theme': 'gb',
@@ -90,7 +95,7 @@ def get_games(system):
                 'name': rom['name'],
             }
     else:
-        extensions = ['.cue'] if system.get('disc') else ['.7z', '.zip']
+        extensions = ['.cue'] if system.get('disc') else system.get('ext', ['.7z', '.zip'])
         for k in os.listdir(rom_path):
             if not any(k.endswith(ext) for ext in extensions):
                 continue

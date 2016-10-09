@@ -80,6 +80,10 @@ SYSTEMS = {
         #'emulator': 'retroarch-mednafen-vb',
         'extensions': ['vb'],
     },
+    'wii': {
+        'emulator': 'dolphin',
+        'extensions': ['wad'],
+    },
 }
 
 EMULATORS = {
@@ -126,6 +130,10 @@ EMULATORS = {
     },
     'mednafen': {
         'audio_lock': True,
+    },
+    'dolphin': {
+        'exe': 'dolphin-emu',
+        'params': ['-e'],
     },
 }
 
