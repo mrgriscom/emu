@@ -8,7 +8,7 @@ import subprocess
 import itertools
 import tempfile
 
-ROM_ROOT = '/mnt/ext/roms'
+ROM_ROOT = '/home/drew/roms'
 
 SYSTEMS = {
     '32x': {

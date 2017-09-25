@@ -4,7 +4,7 @@ import shutil
 import re
 import mame_roms
 
-ROMS_PATH = '/mnt/ext/roms'
+ROMS_PATH = '/home/drew/roms'
 FRONTEND_CONFIG_ROOT = '/home/drew/dev/emu/configs/emulationstation'
 
 SYSTEMS = [
@@ -116,16 +116,20 @@ for dir in (GAMELIST_DIR, LAUNCH_LINKS_DIR):
         shutil.rmtree(dir)
     os.mkdir(dir)
 
+with open('favorites') as f:
+    favorites = filter(None, (ln.strip() for ln in f.readlines() if not ln.startswith('#')))
+    
 root = etree.Element('systemList')
 for system in SYSTEMS:
     name = system['system']
 
     system_launch_links_dir = os.path.join(LAUNCH_LINKS_DIR, name)
     os.mkdir(system_launch_links_dir)
+    # space in subdir is necessary to place before other games (emulationstation groups folder
+    # contents in menu and uses path name as sort key)
+    system_fav_launch_links_dir = os.path.join(system_launch_links_dir, ' favorites')
+    os.mkdir(system_fav_launch_links_dir)
 
-    with open(os.path.join(system_launch_links_dir, ROULETTE), 'w'):
-        pass
-        
     theme = system.get('theme', name)
     e = etree.SubElement(root, 'system')
     etree.SubElement(e, 'name').text = name
@@ -139,6 +143,8 @@ for system in SYSTEMS:
     gamelist = etree.Element('gameList')
     
     for game in get_games(system):
+        is_favorite = any(os.path.join(os.path.split(game['dir'])[1], game['file']) == fav for fav in favorites)
+
         launch_path = os.path.join(system_launch_links_dir, '%s.game' % os.path.splitext(game['file'])[0])
         with open(launch_path, 'w') as f:
             f.write('%s\n' % os.path.join(game['dir'], game['file']))
@@ -147,6 +153,18 @@ for system in SYSTEMS:
         etree.SubElement(e, 'path').text = os.path.join('.', launch_path)
         etree.SubElement(e, 'name').text = game['name']
 
+        if is_favorite:
+            fav_launch_path = os.path.join(system_fav_launch_links_dir, '%s.game' % os.path.splitext(game['file'])[0])
+            with open(fav_launch_path, 'w') as f:
+                f.write('%s\n' % os.path.join(game['dir'], game['file']))
+
+            e = etree.SubElement(gamelist, 'game')
+            etree.SubElement(e, 'path').text = os.path.join('.', fav_launch_path)
+            etree.SubElement(e, 'name').text = game['name']
+
+    with open(os.path.join(system_launch_links_dir, ROULETTE), 'w'):
+        pass
+        
     e = etree.SubElement(gamelist, 'game')
     etree.SubElement(e, 'path').text = os.path.join('.', os.path.join(system_launch_links_dir, ROULETTE))
     etree.SubElement(e, 'name').text = ' Surprise Me!'

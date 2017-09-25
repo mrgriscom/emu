@@ -7,7 +7,7 @@ import shutil
 import itertools
 
 MAME_VERSION = '0.177'
-MAME_PATH = '/mnt/ext/roms/mame/'
+MAME_PATH = '/home/drew/roms/mame/'
 MAME_EXT = '.7z'
 
 # Downloaded from http://www.progettoemma.net/public/cat/cat32en.zip
