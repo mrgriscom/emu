@@ -53,7 +53,7 @@ SYSTEMS = {
         'extensions': ['nes'],
     },
     'psx': {
-        'emulator': 'retroarch-mednafen-psx',
+        'emulator': 'retroarch-beetle-psx',
         'extensions': ['cue', 'iso'],
         'bios': 'required', # scph*.bin
     },
@@ -71,13 +71,13 @@ SYSTEMS = {
 
     },
     'turbografx': {
-        'emulator': 'retroarch-mednafen-pce',
+        'emulator': 'retroarch-beetle-pce',
         'extensions': ['pce'],
     },
     'virtualboy': {
         'emulator': 'mednafen',
         # retroarch can't do proper SxS left-eye/right-eye view for 3D tv
-        #'emulator': 'retroarch-mednafen-vb',
+        #'emulator': 'retroarch-beetle-vb',
         'extensions': ['vb'],
     },
     'wii': {
@@ -100,15 +100,15 @@ EMULATORS = {
         'exe': 'retroarch',
         'params': ['-L', '/usr/lib/libretro/genesis_plus_gx_libretro.so'],
     },
-    'retroarch-mednafen-pce': {
+    'retroarch-beetle-pce': {
         'exe': 'retroarch',
         'params': ['-L', '/usr/lib/libretro/mednafen_pce_fast_libretro.so'],
     },
-    'retroarch-mednafen-psx': {
+    'retroarch-beetle-psx': {
         'exe': 'retroarch',
         'params': ['-L', '/usr/lib/libretro/mednafen_psx_libretro.so'],
     },
-    'retroarch-mednafen-vb': {
+    'retroarch-beetle-vb': {
         'exe': 'retroarch',
         'params': ['-L', '/usr/lib/libretro/mednafen_vb_libretro.so'],
     },
