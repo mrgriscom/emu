@@ -118,6 +118,8 @@ for dir in (GAMELIST_DIR, LAUNCH_LINKS_DIR):
 
 with open('favorites') as f:
     favorites = filter(None, (ln.strip() for ln in f.readlines() if not ln.startswith('#')))
+    assert len(favorites) == len(set(favorites))
+    favorites = set(favorites)
     
 root = etree.Element('systemList')
 for system in SYSTEMS:
@@ -143,7 +145,12 @@ for system in SYSTEMS:
     gamelist = etree.Element('gameList')
     
     for game in get_games(system):
-        is_favorite = any(os.path.join(os.path.split(game['dir'])[1], game['file']) == fav for fav in favorites)
+        is_favorite = False
+        try:
+            favorites.remove(os.path.join(os.path.split(game['dir'])[1], game['file']))
+            is_favorite = True
+        except KeyError:
+            pass
 
         launch_path = os.path.join(system_launch_links_dir, '%s.game' % os.path.splitext(game['file'])[0])
         with open(launch_path, 'w') as f:
@@ -175,6 +182,9 @@ for system in SYSTEMS:
     with open(os.path.join(gamelist_dir, 'gamelist.xml'), 'w') as f:
         f.write(etree.tostring(gamelist, pretty_print=True))
 
+if favorites:
+    print 'unrecognized favorites:', favorites
+        
 with open(os.path.join(FRONTEND_CONFIG_ROOT, 'es_systems.cfg'), 'w') as f:
     f.write(etree.tostring(root, pretty_print=True))
 
