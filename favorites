@@ -54,6 +54,7 @@ genesis/Sonic Crackers (Japan) (Proto).zip
 genesis/Sonic The Hedgehog (USA, Europe).zip
 genesis/Sonic The Hedgehog 2 (World) (Rev A).zip
 genesis/Sonic The Hedgehog 3 (USA).zip
+genesis/Spider-Man . Venom - Maximum Carnage (World).zip
 genesis/Streets of Rage 2 (USA).zip
 genesis/ToeJam & Earl (World) (Rev A).zip
 genesis/ToeJam & Earl in Panic on Funkotron (USA).zip
@@ -153,6 +154,33 @@ nes/Wizards & Warriors III - Kuros...Visions of Power (USA).zip
 nes/Yo! Noid (USA).zip
 nes/Zelda II - The Adventure of Link (USA).zip
 nes/Zombie Nation (USA).zip
+snes/Chrono Trigger (USA).zip
+snes/Donkey Kong Country (USA) (Rev 2).zip
+snes/Donkey Kong Country 2 - Diddy's Kong Quest (USA) (En,Fr) (Rev 1).zip
+snes/Donkey Kong Country 3 - Dixie Kong's Double Trouble! (USA) (En,Fr).zip
+snes/EarthBound (USA).zip
+snes/F-Zero (USA).zip
+snes/Legend of Zelda, The - A Link to the Past (USA).zip
+snes/Lion King, The (USA).zip
+snes/Mario Paint (Japan, USA).zip
+snes/Mega Man 7 (USA).zip
+snes/Mega Man X (USA) (Rev 1).zip
+snes/Mega Man X2 (USA).zip
+snes/Mega Man X3 (USA).zip
+snes/Pilotwings (USA).zip
+snes/Plok! (USA).zip
+snes/Rockman & Forte (Japan).zip
+snes/Star Fox (USA) (Rev 2).zip
+snes/Super Castlevania IV (USA).zip
+snes/Super Mario All-Stars (USA).zip
+snes/Super Mario World (USA).zip
+snes/Super Mario World 2 - Yoshi's Island (USA) (Rev 1).zip
+snes/Super Metroid (Japan, USA) (En,Ja).zip
+snes/Super Turrican (USA).zip
+snes/Top Gear (USA).zip
+snes/Top Gear 2 (USA).zip
+snes/Uniracers (USA).zip
+snes/Zombies Ate My Neighbors (USA).zip
 virtualboy/Galactic Pinball (Japan, USA).zip
 virtualboy/Innsmouth no Yakata (Japan).zip
 virtualboy/Mario Clash (Japan, USA).zip
@@ -162,27 +190,20 @@ virtualboy/Teleroboxer (Japan, USA).zip
 virtualboy/Vertical Force (USA).zip
 virtualboy/Virtual Boy Wario Land (Japan, USA).zip
 virtualboy/Waterworld (USA).zip
-# segacd, psx listings are not exhaustive, so essentially all favorites already
-
+# segacd - not full game set
+# psx - not full game set
+# wii - experimental support
 
 #gameboy
 #metroid 2
 #tetris
 
-#snes
-#super metroid
-#super mario world
-#yoshi's island
-#super mario allstars (+ lost levels?)
-#lion king
-#donkey kongs
-#top gear
-#star fox
-#chrono trigger
-#megaman/rockman
-#zombies ate my neighbors
-#super turrican?
-#fallon game with gumby thingy
+#n64
+#mario64
+#mariokart
+#goldeneye
+#paper mario
+#super smash
 
 #mame:
 #paperboy
