@@ -6,6 +6,66 @@
 32x/Virtua Racing Deluxe (USA).zip
 fds/Super Mario Brothers 2 (Japan).zip 
 fds/Yume Koujou Doki Doki Panic (Japan) [b].zip 
+genesis/Adventures of Batman & Robin, The (USA).zip
+genesis/Aladdin (USA).zip
+genesis/Alien Soldier (Europe).zip
+genesis/Another World (Europe).zip
+genesis/Bare Knuckle - Ikari no Tetsuken ~ Streets of Rage (World) (Rev A).zip
+genesis/Batman Forever (World).zip
+genesis/Castlevania - Bloodlines (USA).zip
+genesis/Comix Zone (USA).zip
+genesis/Desert Strike - Return To The Gulf (USA, Europe).zip
+genesis/Dr. Robotnik's Mean Bean Machine (USA).zip
+genesis/Dynamite Headdy (USA, Europe).zip
+genesis/Earthworm Jim (USA).zip
+genesis/Earthworm Jim 2 (USA).zip
+genesis/Ecco - The Tides of Time (USA).zip
+genesis/Ecco the Dolphin (USA, Europe).zip
+genesis/Fantastic Dizzy (USA, Europe) (En,Fr,De,Es,It).zip
+genesis/Flashback (Europe) (Rev A).zip
+genesis/Gunstar Heroes (USA).zip
+genesis/Herzog Zwei (USA, Europe).zip
+genesis/Jungle Strike (USA, Europe).zip
+genesis/MUSHA - Metallic Uniframe Super Hybrid Armor (USA).zip
+genesis/Mega Man - The Wily Wars (Europe).zip
+genesis/Micro Machines (USA, Europe).zip
+genesis/Micro Machines 2 - Turbo Tournament (Europe) (J-Cart).zip
+genesis/Mortal Kombat (World) (v1.1).zip
+genesis/Mortal Kombat II (World).zip
+genesis/Ooze, The (Japan, USA).zip
+genesis/Phantasy Star II (USA, Europe) (Rev A).zip
+genesis/Phantasy Star III - Generations of Doom (USA, Europe).zip
+genesis/Phantasy Star IV (USA).zip
+genesis/Red Zone (USA, Europe).zip
+genesis/Ren & Stimpy Show Presents Stimpy's Invention, The (USA).zip
+genesis/Revenge of Shinobi, The (USA, Europe).zip
+genesis/Richard Scarry's Busytown (USA).zip
+genesis/Ristar (USA, Europe) (September 1994).zip
+genesis/Road Rash (USA, Europe).zip
+genesis/Road Rash II (USA, Europe) (v1.2).zip
+genesis/Rocket Knight Adventures (USA).zip
+genesis/Sensible Soccer (Europe) (En,Fr,De,It).zip
+genesis/Shadow Dancer - The Secret of Shinobi (World).zip
+genesis/Shinobi III - Return of the Ninja Master (USA).zip
+genesis/Skitchin' (USA, Europe).zip
+genesis/Sonic & Knuckles (World).zip
+genesis/Sonic & Knuckles + Sonic The Hedgehog 3 (World).zip
+genesis/Sonic Crackers (Japan) (Proto).zip
+genesis/Sonic The Hedgehog (USA, Europe).zip
+genesis/Sonic The Hedgehog 2 (World) (Rev A).zip
+genesis/Sonic The Hedgehog 3 (USA).zip
+genesis/Streets of Rage 2 (USA).zip
+genesis/ToeJam & Earl (World) (Rev A).zip
+genesis/ToeJam & Earl in Panic on Funkotron (USA).zip
+genesis/Urban Strike (USA, Europe).zip
+genesis/Vectorman (USA, Europe).zip
+genesis/Vectorman 2 (USA).zip
+genesis/Wiz'n'Liz (USA).zip
+genesis/X-Men (USA).zip
+genesis/X-Men 2 - Clone Wars (USA, Europe).zip
+genesis/Zany Golf (USA, Europe) (v1.1).zip
+genesis/Zero Tolerance (USA, Europe).zip
+genesis/Zero Wing (Europe).zip
 nes/Action 52 (USA) (Rev A) (Unl).zip
 nes/Adventure Island II (USA).zip
 nes/Akumajou Densetsu (Japan).zip
@@ -90,6 +150,7 @@ nes/Vice - Project Doom (USA).zip
 nes/Winter Games (USA) (Rev A).zip
 nes/Wizards & Warriors (USA) (Rev A).zip
 nes/Wizards & Warriors III - Kuros...Visions of Power (USA).zip
+nes/Yo! Noid (USA).zip
 nes/Zelda II - The Adventure of Link (USA).zip
 nes/Zombie Nation (USA).zip
 virtualboy/Galactic Pinball (Japan, USA).zip
@@ -98,10 +159,30 @@ virtualboy/Mario Clash (Japan, USA).zip
 virtualboy/Mario's Tennis (Japan, USA).zip
 virtualboy/Red Alarm (USA).zip
 virtualboy/Teleroboxer (Japan, USA).zip
+virtualboy/Vertical Force (USA).zip
 virtualboy/Virtual Boy Wario Land (Japan, USA).zip
 virtualboy/Waterworld (USA).zip
-virtualboy/Vertical Force (USA).zip
+# segacd, psx listings are not exhaustive, so essentially all favorites already
 
+
+#gameboy
+#metroid 2
+#tetris
+
+#snes
+#super metroid
+#super mario world
+#yoshi's island
+#super mario allstars (+ lost levels?)
+#lion king
+#donkey kongs
+#top gear
+#star fox
+#chrono trigger
+#megaman/rockman
+#zombies ate my neighbors
+#super turrican?
+#fallon game with gumby thingy
 
 #mame:
 #paperboy
@@ -110,7 +191,7 @@ virtualboy/Vertical Force (USA).zip
 #double dragon
 #gtmr
 #sexy parodius
-
+#bonanza bros
 
 
 
