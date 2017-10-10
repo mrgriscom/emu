@@ -1,3 +1,5 @@
+#gameboy/LSDJ (todo)
+#gameboy/nanoloop (todo)
 32x/Chaotix ~ Knuckles' Chaotix (Japan, USA).zip
 32x/Golf Magazine 36 Great Holes Starring Fred Couples (Japan, USA).zip
 32x/Kolibri (USA, Europe).zip
@@ -6,6 +8,51 @@
 32x/Virtua Racing Deluxe (USA).zip
 fds/Super Mario Brothers 2 (Japan).zip 
 fds/Yume Koujou Doki Doki Panic (Japan) [b].zip 
+gameboy/Amazing Penguin (USA, Europe).zip
+gameboy/Avenging Spirit (USA, Europe).zip
+gameboy/Bubble Ghost (USA, Europe).zip
+gameboy/Chikyuu Kaihou Gun ZAS (Japan).zip
+gameboy/Donkey Kong (World) (Rev A) (SGB Enhanced).zip
+gameboy/Faceball 2000 (USA).zip
+gameboy/Gargoyle's Quest (USA, Europe).zip
+gameboy/Kid Dracula (USA, Europe).zip
+gameboy/Kirby's Dream Land (USA, Europe).zip
+gameboy/Kirby's Dream Land 2 (USA, Europe) (SGB Enhanced).zip
+gameboy/Mega Man V (USA) (SGB Enhanced).zip
+gameboy/Metroid II - Return of Samus (World).zip
+gameboy/Pinball - Revenge of the 'Gator (USA, Europe).zip
+gameboy/Pokemon - Blue Version (USA, Europe) (SGB Enhanced).zip
+gameboy/Pokemon - Red Version (USA, Europe) (SGB Enhanced).zip
+gameboy/Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (GBC,SGB Enhanced).zip
+gameboy/Pyramids of Ra (USA).zip
+gameboy/Quarth (USA, Europe).zip
+gameboy/Super Mario Land (World) (Rev A).zip
+gameboy/Super Mario Land 2 - 6 Golden Coins (USA, Europe) (Rev B).zip
+gameboy/Tetris (World) (Rev A).zip
+gameboy/Trip World (Europe).zip
+gameboy/Vattle Giuce (Japan).zip
+gameboy/Wario Land - Super Mario Land 3 (World).zip
+gameboy/Wario Land II (USA, Europe) (SGB Enhanced).zip
+gbc/Alice in Wonderland (USA).zip
+gbc/Alone in the Dark - The New Nightmare (USA) (En,Fr,Es).zip
+gbc/Bionic Commando - Elite Forces (USA).zip
+gbc/Cannon Fodder (USA) (En,Fr,De,Es,It).zip
+gbc/Dexter's Laboratory - Robot Rampage (USA).zip
+gbc/Legend of Zelda, The - Link's Awakening DX (USA, Europe) (Rev B) (SGB Enhanced).zip
+gbc/Legend of Zelda, The - Oracle of Ages (USA).zip
+gbc/Legend of Zelda, The - Oracle of Seasons (USA).zip
+gbc/Mega Man Xtreme (USA).zip
+gbc/Mega Man Xtreme 2 (USA, Europe).zip
+gbc/Metal Gear Solid (USA).zip
+gbc/Ottifanten - Kommando Stoertebeker (Germany).zip
+gbc/Pokemon - Crystal Version (USA, Europe) (Rev A).zip
+gbc/Pokemon - Gold Version (USA, Europe) (SGB Enhanced).zip
+gbc/Pokemon - Silver Version (USA, Europe) (SGB Enhanced).zip
+gbc/Shantae (USA).zip
+gbc/Super Mario Bros. Deluxe (USA, Europe) (Rev B).zip
+gbc/Tomb Raider (USA, Europe) (En,Fr,De,Es,It).zip
+gbc/Wario Land 3 (World) (En,Ja).zip
+gbc/Wendy - Every Witch Way (USA, Europe).zip
 genesis/Adventures of Batman & Robin, The (USA).zip
 genesis/Aladdin (USA).zip
 genesis/Alien Soldier (Europe).zip
@@ -54,6 +101,7 @@ genesis/Sonic Crackers (Japan) (Proto).zip
 genesis/Sonic The Hedgehog (USA, Europe).zip
 genesis/Sonic The Hedgehog 2 (World) (Rev A).zip
 genesis/Sonic The Hedgehog 3 (USA).zip
+genesis/Spider-Man (World) (Sega).zip
 genesis/Spider-Man . Venom - Maximum Carnage (World).zip
 genesis/Streets of Rage 2 (USA).zip
 genesis/ToeJam & Earl (World) (Rev A).zip
@@ -160,6 +208,7 @@ snes/Donkey Kong Country 2 - Diddy's Kong Quest (USA) (En,Fr) (Rev 1).zip
 snes/Donkey Kong Country 3 - Dixie Kong's Double Trouble! (USA) (En,Fr).zip
 snes/EarthBound (USA).zip
 snes/F-Zero (USA).zip
+snes/Firemen, The (Europe) (En,Fr,De).zip
 snes/Legend of Zelda, The - A Link to the Past (USA).zip
 snes/Lion King, The (USA).zip
 snes/Mario Paint (Japan, USA).zip
@@ -167,6 +216,7 @@ snes/Mega Man 7 (USA).zip
 snes/Mega Man X (USA) (Rev 1).zip
 snes/Mega Man X2 (USA).zip
 snes/Mega Man X3 (USA).zip
+snes/Metal Warriors (USA).zip
 snes/Pilotwings (USA).zip
 snes/Plok! (USA).zip
 snes/Rockman & Forte (Japan).zip
@@ -180,6 +230,7 @@ snes/Super Turrican (USA).zip
 snes/Top Gear (USA).zip
 snes/Top Gear 2 (USA).zip
 snes/Uniracers (USA).zip
+snes/Wild Guns (USA).zip
 snes/Zombies Ate My Neighbors (USA).zip
 virtualboy/Galactic Pinball (Japan, USA).zip
 virtualboy/Innsmouth no Yakata (Japan).zip
@@ -194,9 +245,16 @@ virtualboy/Waterworld (USA).zip
 # psx - not full game set
 # wii - experimental support
 
-#gameboy
-#metroid 2
-#tetris
+
+
+
+mr driller someplatform
+perfect dark some platform
+
+# gg
+sonic 2
+
+# gba
 
 #n64
 #mario64
@@ -204,6 +262,9 @@ virtualboy/Waterworld (USA).zip
 #goldeneye
 #paper mario
 #super smash
+#harvest moon
+
+#pce
 
 #mame:
 #paperboy
@@ -215,8 +276,7 @@ virtualboy/Waterworld (USA).zip
 #bonanza bros
 
 
-
-
-
+#metal gear 2: solid snake -- only msx?
+#comparison to snake's revenge?
 
 
