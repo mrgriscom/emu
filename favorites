@@ -92,6 +92,7 @@ genesis/Gunstar Heroes (USA).zip
 genesis/Herzog Zwei (USA, Europe).zip
 genesis/Jungle Strike (USA, Europe).zip
 genesis/MUSHA - Metallic Uniframe Super Hybrid Armor (USA).zip
+genesis/Mega Bomberman (USA).zip
 genesis/Mega Man - The Wily Wars (Europe).zip
 genesis/Micro Machines (USA, Europe).zip
 genesis/Micro Machines 2 - Turbo Tournament (Europe) (J-Cart).zip
@@ -134,6 +135,39 @@ genesis/X-Men 2 - Clone Wars (USA, Europe).zip
 genesis/Zany Golf (USA, Europe) (v1.1).zip
 genesis/Zero Tolerance (USA, Europe).zip
 genesis/Zero Wing (Europe).zip
+n64/007 - GoldenEye (USA).zip
+n64/Bakuretsu Muteki Bangaioh (Japan).zip
+n64/Banjo-Kazooie (USA) (Rev A).zip
+n64/Blast Corps (USA) (Rev A).zip
+n64/Bomberman 64 (USA).zip
+n64/Conker's Bad Fur Day (USA).zip
+n64/Diddy Kong Racing (USA) (En,Fr) (Rev A).zip
+n64/F-Zero X (USA).zip
+n64/Gauntlet Legends (USA).zip
+n64/Harvest Moon 64 (USA).zip
+n64/Legend of Zelda, The - Majora's Mask (USA).zip
+n64/Legend of Zelda, The - Ocarina of Time (USA) (Rev B).zip
+n64/Mario Kart 64 (USA).zip
+n64/Mario Party (USA).zip
+n64/Mario Party 2 (USA).zip
+n64/Mario Party 3 (USA).zip
+n64/Mario Tennis (USA).zip
+n64/Paper Mario (USA).zip
+n64/Perfect Dark (USA) (Rev A).zip
+n64/Pilotwings 64 (USA).zip
+n64/Pokemon Stadium (USA) (Rev A).zip
+n64/Rayman 2 - The Great Escape (USA) (En,Fr,De,Es,It).zip
+n64/SpaceStation Silicon Valley (USA).zip
+n64/Star Fox 64 (USA) (Rev A).zip
+n64/Star Wars - Rogue Squadron (USA) (Rev A).zip
+n64/Star Wars Episode I - Battle for Naboo (USA).zip
+n64/Star Wars Episode I - Racer (USA).zip
+n64/Super Mario 64 (USA).zip
+n64/Super Smash Bros. (USA).zip
+n64/Tsumi to Batsu - Hoshi no Keishousha (Japan).zip
+n64/Turok - Dinosaur Hunter (USA) (Rev B).zip
+n64/WCW-nWo Revenge (USA).zip
+n64/Wave Race 64 (USA) (Rev A).zip
 nes/Action 52 (USA) (Rev A) (Unl).zip
 nes/Adventure Island II (USA).zip
 nes/Akumajou Densetsu (Japan).zip
@@ -240,6 +274,11 @@ snes/Pilotwings (USA).zip
 snes/Plok! (USA).zip
 snes/Rockman & Forte (Japan).zip
 snes/Star Fox (USA) (Rev 2).zip
+snes/Super Bomber Man 4 (Japan).zip
+snes/Super Bomber Man 5 (Japan).zip
+snes/Super Bomberman (USA).zip
+snes/Super Bomberman 2 (USA).zip
+snes/Super Bomberman 3 (Europe).zip
 snes/Super Castlevania IV (USA).zip
 snes/Super Mario All-Stars (USA).zip
 snes/Super Mario World (USA).zip
@@ -251,6 +290,22 @@ snes/Top Gear 2 (USA).zip
 snes/Uniracers (USA).zip
 snes/Wild Guns (USA).zip
 snes/Zombies Ate My Neighbors (USA).zip
+turbografx/Air Zonk (USA).zip
+turbografx/Alien Crush (USA).zip
+turbografx/Blazing Lazers (USA).zip
+turbografx/Bomberman '93 (USA).zip
+turbografx/Bomberman '94 (Japan).zip
+turbografx/Bonk III - Bonk's Big Adventure (USA).zip
+turbografx/Bonk's Adventure (USA).zip
+turbografx/Bonk's Revenge (USA).zip
+turbografx/Devil's Crush - Naxat Pinball (USA).zip
+turbografx/Dragon's Curse (USA).zip
+turbografx/Gekisha Boy (Japan).zip
+turbografx/Gomola Speed (Japan).zip
+turbografx/Keith Courage in Alpha Zones (USA).zip
+turbografx/Legendary Axe, The (USA).zip
+turbografx/Ninja Spirit (USA).zip
+turbografx/Super Star Soldier (USA).zip
 virtualboy/Galactic Pinball (Japan, USA).zip
 virtualboy/Innsmouth no Yakata (Japan).zip
 virtualboy/Mario Clash (Japan, USA).zip
@@ -265,33 +320,9 @@ virtualboy/Waterworld (USA).zip
 # wii - experimental support
 
 
-
-
-
-
 # gba
-
-#n64
-#mario64
-#mariokart
-#mario party
-#ocarina of time
-#goldeneye
-#paper mario
-#super smash
-#harvest moon
-space station silicon valley
-banjo kazooie
-conker's bad fur day
-sin & punishment
-starfox 64
-
-
-#pce
-airzonk
-keith courage
-devil's crush
-alien crush
+harvest moon mineral town
+sonic advance
 
 #mame:
 #paperboy
@@ -301,28 +332,4 @@ alien crush
 #gtmr
 #sexy parodius
 #bonanza bros
-
-
-#metal gear 2: solid snake -- only msx?
-#comparison to snake's revenge?
-#mr driller someplatform
-#perfect dark some platform
-
-#lemmings
-#worms
-#katamari
-#rez
-
-wii
-madworld
-super mario galaxy 1/2
-wii sports resort
-wii fit
-kirby's epic yarn
-sonic
-
-jaguar
-avp
-cybermorph
-
-wikipedia milestone titles
+#cruisn usa (if runnable, else n64)
