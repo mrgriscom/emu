@@ -50,6 +50,46 @@ gamegear/Tails Adventures (World) (En,Ja).zip
 gamegear/Vampire - Master of Darkness (USA).zip
 gamegear/Wonder Boy - The Dragon's Trap (Europe).zip
 gamegear/Woody Pop (World) (Rev 1).zip
+gba/Advance Wars (USA) (Rev 1).zip
+gba/Advance Wars 2 - Black Hole Rising (USA, Australia).zip
+gba/Astro Boy - Omega Factor (USA) (En,Ja,Fr,De,Es,It).zip
+gba/Boktai - The Sun Is in Your Hand (USA).zip
+gba/Car Battler Joe (USA).zip
+gba/Castlevania - Aria of Sorrow (USA).zip
+gba/Castlevania - Circle of the Moon (USA).zip
+gba/Castlevania - Harmony of Dissonance (USA).zip
+gba/Drill Dozer (USA).zip
+gba/Golden Sun (USA, Europe).zip
+gba/Gunstar Super Heroes (USA).zip
+gba/Harvest Moon - Friends of Mineral Town (USA).zip
+gba/Iridion 3D (USA, Europe).zip
+gba/Iridion II (USA).zip
+gba/Kirby & the Amazing Mirror (USA).zip
+gba/Mario Golf - Advance Tour (USA).zip
+gba/Mario Kart - Super Circuit (USA).zip
+gba/Mega Man Zero (USA, Europe).zip
+gba/Mega Man Zero 2 (USA).zip
+gba/Mega Man Zero 3 (USA).zip
+gba/Mega Man Zero 4 (USA).zip
+gba/Metroid - Zero Mission (USA).zip
+gba/Metroid Fusion (USA, Australia).zip
+gba/Mother 3 (Japan).zip
+gba/Ninja Five-0 (USA).zip
+gba/Pinball of the Dead, The (USA).zip
+gba/Pokemon - Emerald Version (USA, Europe).zip
+gba/Pokemon - Ruby Version (USA, Europe) (Rev 2).zip
+gba/Pokemon - Sapphire Version (USA, Europe) (Rev 2).zip
+gba/Sonic Advance (USA) (En,Ja).zip
+gba/Sonic Advance 2 (USA) (En,Ja,Fr,De,Es,It).zip
+gba/Sonic Advance 3 (USA) (En,Ja,Fr,De,Es,It).zip
+gba/Super Mario Advance (USA, Europe).zip
+gba/Super Mario Advance 2 - Super Mario World (USA, Australia).zip
+gba/Super Mario Advance 3 - Yoshi's Island (USA).zip
+gba/Super Mario Advance 4 - Super Mario Bros. 3 (USA, Australia) (Rev 1).zip
+gba/Tactics Ogre - The Knight of Lodis (USA).zip
+gba/Tony Hawk's Pro Skater 2 (USA, Europe).zip
+gba/Wario Land 4 (USA, Europe).zip
+gba/WarioWare, Inc. - Mega Microgame$! (USA).zip
 gbc/Alice in Wonderland (USA).zip
 gbc/Alone in the Dark - The New Nightmare (USA) (En,Fr,Es).zip
 gbc/Bionic Commando - Elite Forces (USA).zip
@@ -327,9 +367,6 @@ virtualboy/Waterworld (USA).zip
 # wii - experimental support
 
 
-# gba
-harvest moon mineral town
-sonic advance
 
 #mame:
 #paperboy
