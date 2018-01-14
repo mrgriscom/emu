@@ -61,13 +61,16 @@ WHITELIST_CATS = [
     'Tabletop',
 ]
 
+MATURE_EXTRA = ['chiller']
+
 # Consolidate (and sanity check) all mame rom metadata
 def load_mame_metadata(xml_index=None):
     if xml_index is None:
         xml_index = mame_roms_xml()
     files = mame_rom_archives()
     categories = rom_genres()
-
+    mature = mature_roms()
+    
     all_info = {}
     for name, e in sorted(xml_index.iteritems()):
         info = {}
@@ -80,10 +83,20 @@ def load_mame_metadata(xml_index=None):
             'bios': (e.attrib.get('isbios') == 'yes'),
             'em': (e.attrib.get('ismechanical') == 'yes'),
             'file': (name in files),
+            'mature': (name in mature),
         })
+
+        year = None
+        e_year = e.find('year')
+        if e_year is not None:
+            year = e_year.text
+            if all(c == '?' for c in year):
+                year = None
+        info['year'] = year
+
         info['playable'] = all(not info[k] for k in ('device', 'bios', 'em'))
         # Note: 'em' not entirely synonymous with Electromechanical category
-
+        
         #info['functional'] = False
         # input.players = 0 seems to indicate rom not functional (in addition to non-game devices)
         # How else to detect non-working games?
@@ -162,8 +175,9 @@ def rom_genres():
             genres[rom] = genre
     return genres
 
-
-
+def mature_roms():
+    roms = set(roms_categories('Mature.ini')['* Mature *'])
+    return sorted(roms | set(MATURE_EXTRA))
 
 # Return list and metadata of all "playable" roms (visible in front-end)
 def playable_roms(all_info, include_hidden=False):
@@ -175,7 +189,8 @@ def playable_roms(all_info, include_hidden=False):
         return {
             'rom': info['name'],
             'name': info['title'],
-            'annotations': set(),
+            'year': info['year'],
+            'mature': info['mature'],
         }
     return sorted(filter(None, map(process, all_info.values())), key=lambda e: e['name'])
     

@@ -89,10 +89,15 @@ def get_games(system):
     if name == 'mame':
         mame_info = mame_roms.load_mame_metadata()
         for rom in mame_roms.playable_roms(mame_info):
+            name_parts = [rom['name']]
+            if rom['year']:
+                name_parts.append('- %s' % rom['year'])
+            if rom['mature']:
+                name_parts.append('[M]')
             yield {
                 'dir': rom_path,
                 'file': rom['rom'],
-                'name': rom['name'],
+                'name': ' '.join(name_parts),
             }
     else:
         extensions = ['.cue'] if system.get('disc') else system.get('ext', ['.7z', '.zip'])
