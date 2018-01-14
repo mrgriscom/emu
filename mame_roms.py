@@ -5,11 +5,20 @@ from lxml import etree
 import tempfile
 import shutil
 import itertools
+import re
 
 MAME_VERSION = '0.177'
 MAME_PATH = '/home/drew/roms/mame/'
 MAME_EXT = '.7z'
 
+def check_versions():
+    exe_version = re.search('0[.][0-9]+', os.popen('mame -h').readlines()[0]).group()
+    with open(os.path.join(MAME_PATH, 'VERSION')) as f:
+        roms_version = f.read().strip()
+    versions = {'expected': MAME_VERSION, 'exe': exe_version, 'roms': roms_version}
+    assert len(set(versions.values())) == 1, versions
+check_versions()
+    
 # Downloaded from http://www.progettoemma.net/public/cat/cat32en.zip
 CATLIST_PATH = os.path.join(os.path.dirname(__file__), 'cat32en')
 
