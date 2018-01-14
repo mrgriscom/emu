@@ -100,6 +100,7 @@ def load_mame_metadata(xml_index=None):
         #info['functional'] = False
         # input.players = 0 seems to indicate rom not functional (in addition to non-game devices)
         # How else to detect non-working games?
+        # -verifyroms will detect missing CHDs
         
         romof = e.attrib.get('romof')
         cloneof = e.attrib.get('cloneof')
