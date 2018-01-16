@@ -403,9 +403,11 @@ mame/batrider
 mame/bbh2sp
 mame/bbhsc
 mame/berzerk
+mame/bjourney
 mame/blazstar
 mame/blktiger
 mame/bloodbro
+mame/bloodstm
 mame/bnzabros
 mame/boogwingu
 mame/btime
@@ -480,6 +482,7 @@ mame/gt98
 mame/gt99
 mame/gticlub
 mame/gtmr
+mame/gururin
 mame/guwange
 mame/gyruss
 mame/hippodrm
@@ -488,6 +491,7 @@ mame/hook
 mame/hotd
 mame/hotd2
 mame/inthunt
+mame/jojobane
 mame/joust
 mame/karnov
 mame/kidniki
@@ -505,13 +509,16 @@ mame/kotm2
 mame/kungfum
 mame/lastblad
 mame/lastbld2
+mame/lbowling
 mame/lethalen
 mame/llander
+mame/loht
 mame/magdrop
 mame/magdrop3
 mame/maglord
 mame/mappy
 mame/marble
+mame/matrim
 mame/metamrph
 mame/mhavoc
 mame/mikie
@@ -584,6 +591,7 @@ mame/ridgerac
 mame/roadblst
 mame/robotron
 mame/rocnrope
+mame/rohga
 mame/rtype2
 mame/rtypeleo
 mame/samsho
@@ -638,6 +646,7 @@ mame/term2
 mame/timber
 mame/timecris
 mame/timecrs2
+mame/timekill
 mame/timeplt
 mame/tmnt
 mame/tmnt2
@@ -645,6 +654,7 @@ mame/toobin
 mame/toutrun
 mame/tp84
 mame/turbo
+mame/twinspri
 mame/uccops
 mame/umk3
 mame/unclepoo
