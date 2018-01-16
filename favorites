@@ -482,7 +482,6 @@ mame/gt98
 mame/gt99
 mame/gticlub
 mame/gtmr
-mame/gururin
 mame/guwange
 mame/gyruss
 mame/hippodrm
@@ -595,6 +594,7 @@ mame/rohga
 mame/rtype2
 mame/rtypeleo
 mame/samsho
+mame/samsho2
 mame/samuraia
 mame/sci
 mame/sectionz
@@ -674,6 +674,7 @@ mame/wardner
 mame/warlords
 mame/wb3
 mame/wboy
+mame/wh2j
 mame/wildfang
 mame/wjammers
 mame/wof
