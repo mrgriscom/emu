@@ -423,6 +423,7 @@ mame/cawing
 mame/centiped
 mame/chasehq
 mame/chiller
+mame/chimerab
 mame/cninja
 mame/congo
 mame/coolridr
@@ -573,6 +574,7 @@ mame/pbobble
 mame/pdrift
 mame/pengo
 mame/pgoal
+mame/phelios
 mame/pigskin
 mame/pipibibs
 mame/pitfight
@@ -698,9 +700,11 @@ mame/wildfang
 mame/wjammers
 mame/wof
 mame/wwfwfest
+mame/xexex
 mame/xmcotau
 mame/xmen
 mame/xmen6p
+mame/xmultipl
 mame/xmvsfu
 mame/xybots
 mame/zaxxon
