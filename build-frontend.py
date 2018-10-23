@@ -116,6 +116,14 @@ GAMELIST_DIR = os.path.join(FRONTEND_CONFIG_ROOT, 'gamelists')
 LAUNCH_LINKS_DIR = os.path.join(FRONTEND_CONFIG_ROOT, 'launchlinks')
 ROULETTE = '_random.game'
 
+def make_roulette(gamelist, path):
+    with open(os.path.join(path, ROULETTE), 'w'):
+        pass        
+    e = etree.SubElement(gamelist, 'game')
+    etree.SubElement(e, 'path').text = os.path.join('.', os.path.join(path, ROULETTE))
+    etree.SubElement(e, 'name').text = ' Surprise Me!'
+    #etree.SubElement(e, 'image').text = 'x.jpg'
+
 for dir in (GAMELIST_DIR, LAUNCH_LINKS_DIR):
     if os.path.exists(dir):
         shutil.rmtree(dir)
@@ -148,7 +156,8 @@ for system in SYSTEMS:
     etree.SubElement(e, 'platform').text = system.get('platform', theme)
 
     gamelist = etree.Element('gameList')
-    
+
+    has_favorites = False
     for game in get_games(system):
         is_favorite = False
         try:
@@ -156,6 +165,7 @@ for system in SYSTEMS:
             is_favorite = True
         except KeyError:
             pass
+        has_favorites |= is_favorite
 
         launch_path = os.path.join(system_launch_links_dir, '%s.game' % os.path.splitext(game['file'])[0])
         with open(launch_path, 'w') as f:
@@ -174,13 +184,9 @@ for system in SYSTEMS:
             etree.SubElement(e, 'path').text = os.path.join('.', fav_launch_path)
             etree.SubElement(e, 'name').text = game['name']
 
-    with open(os.path.join(system_launch_links_dir, ROULETTE), 'w'):
-        pass
-        
-    e = etree.SubElement(gamelist, 'game')
-    etree.SubElement(e, 'path').text = os.path.join('.', os.path.join(system_launch_links_dir, ROULETTE))
-    etree.SubElement(e, 'name').text = ' Surprise Me!'
-    #etree.SubElement(e, 'image').text = 'x.jpg'
+    make_roulette(gamelist, system_launch_links_dir)
+    if has_favorites:
+        make_roulette(gamelist, system_fav_launch_links_dir)
     
     gamelist_dir = os.path.join(FRONTEND_CONFIG_ROOT, 'gamelists', name)
     os.mkdir(gamelist_dir)
