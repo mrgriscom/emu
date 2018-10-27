@@ -129,7 +129,7 @@ EMULATORS = {
         'params': ['-L', '/usr/lib/libretro/picodrive_libretro.so'],
     },
     'mednafen': {
-        'audio_lock': True,
+#        'audio_lock': True,
     },
     'dolphin': {
         'exe': 'dolphin-emu',
