@@ -10,8 +10,6 @@ configs/mame/sta
 configs/retroarch/content_history.lpl
 
 configs/emulationstation/es_systems.cfg
-configs/emulationstation/es_log.txt
+configs/emulationstation/es_log.txt*
 configs/emulationstation/gamelists
 configs/emulationstation/launchlinks
-
-configs/mednafen/sav

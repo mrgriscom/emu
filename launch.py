@@ -75,9 +75,7 @@ SYSTEMS = {
         'extensions': ['pce'],
     },
     'virtualboy': {
-        'emulator': 'mednafen',
-        # retroarch can't do proper SxS left-eye/right-eye view for 3D tv
-        #'emulator': 'retroarch-beetle-vb',
+        'emulator': 'retroarch-beetle-vb', # sbs rendering handled via custom shader
         'extensions': ['vb'],
     },
     'wii': {
@@ -127,9 +125,6 @@ EMULATORS = {
     'retroarch-pico': {
         'exe': 'retroarch',
         'params': ['-L', '/usr/lib/libretro/picodrive_libretro.so'],
-    },
-    'mednafen': {
-#        'audio_lock': True,
     },
     'dolphin': {
         'exe': 'dolphin-emu',
