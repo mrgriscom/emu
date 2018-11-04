@@ -10,127 +10,104 @@ import tempfile
 
 ROM_ROOT = '/home/drew/roms'
 
+def snes_launch(flags):
+    core = 'bsnes_mercury_balanced'
+    if 'high-accuracy' in flags:
+        core = 'bsnes_mercury_accuracy'
+    return retroarch_launch(core)
+
 SYSTEMS = {
     '32x': {
-        'emulator': 'retroarch-pico',
+        'launch': lambda flags: retroarch_launch('picodrive'),
         'extensions': ['32x'],
+        # core lacks multi-tap support
     },
     'fds': {
-        'emulator': 'retroarch-nestopia',
+        'launch': lambda flags: retroarch_launch('nestopia'),
         'extensions': ['fds'],
-        'bios': 'required', # disksys.rom
+        # bios: disksys.rom
+        # multitap: TODO
     },
     'gameboy': {
-        'emulator': 'retroarch-gambatte',
+        'launch': lambda flags: retroarch_launch('gambatte'),
         'extensions': ['gb'],
     },
     'gamegear': {
-        'emulator': 'retroarch-genesisplusgx',
+        'launch': lambda flags: retroarch_launch('genesis_plus_gx'),
         'extensions': ['gg'],
     },
     'gba': {
-        'emulator': 'retroarch-mgba',
+        'launch': lambda flags: retroarch_launch('mgba'),
         'extensions': ['gba'],
     },
     'gbc': {
-        'emulator': 'retroarch-gambatte',
+        'launch': lambda flags: retroarch_launch('gambatte'),
         'extensions': ['gbc'],
     },
     'genesis': {
-        'emulator': 'retroarch-genesisplusgx',
+        'launch': lambda flags: retroarch_launch('genesis_plus_gx'),
         'extensions': ['md'],
+        # multitap: TODO
     },
     'mame': {
-        'emulator': 'mame',
+        'launch': lambda flags: ['mame'],
         'extensions': [],
     },
     'n64': {
-        'emulator': 'retroarch-mupen64',
+        'launch': lambda flags: retroarch_launch('mupen64plus'),
         'extensions': ['n64'],
     },
     'nes': {
-        'emulator': 'retroarch-nestopia',
+        'launch': lambda flags: retroarch_launch('nestopia'),
         'extensions': ['nes'],
+        # multitap: built-in, handled by NstDatabase.xml (in bios dir)
     },
     'psx': {
-        'emulator': 'retroarch-beetle-psx',
+        'launch': lambda flags: retroarch_launch('mednafen_psx'),
         'extensions': ['cue', 'iso'],
-        'bios': 'required', # scph*.bin
+        # bios: scph*.bin
+        # multitap: TODO
     },
     'segacd': {
-        'emulator': 'retroarch-genesisplusgx',
+        'launch': lambda flags: retroarch_launch('genesis_plus_gx'),
         'extensions': ['cue', 'iso'],
-        'bios': 'required', # bios_CD_U.bin
+        # bios: bios_CD_U.bin
+        # multitap: TODO handled as with geneis?
     },
     'snes': {
-        'emulator': 'retroarch-bsnes',
+        'launch': snes_launch,
         'extensions': ['sfc'],
-        'bios': 'certain_games', # *.rom
-        # http://emulation.gametechwiki.com/index.php/Emulator_Files#Super_Famicom_.28SNES.29
-        # "SNES Coprocessor ROMs for bsnes"
-
+        # bios: specific games require co-processor ROMs
+        #   http://emulation.gametechwiki.com/index.php/Emulator_Files#Super_Famicom_.28SNES.29
+        #   "SNES Coprocessor ROMs for bsnes"
+        # multitap: TODO
+        # super gameboy: TODO
     },
     'turbografx': {
-        'emulator': 'retroarch-beetle-pce',
+        'launch': lambda flags: retroarch_launch('mednafen_pce_fast'),
         'extensions': ['pce'],
+        # multitap: built-in
     },
     'virtualboy': {
-        'emulator': 'retroarch-beetle-vb', # sbs rendering handled via custom shader
+        'launch': lambda flags: retroarch_launch('mednafen_vb'),
         'extensions': ['vb'],
+        # sbs rendering handled via custom default shader setting
     },
     'wii': {
-        'emulator': 'dolphin',
+        'launch': lambda flags: ['dolphin', '-e'],
         'extensions': ['wad'],
+        # experimental
     },
 }
 
-EMULATORS = {
-    'mame': {},
-    'retroarch-bsnes': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/bsnes_mercury_balanced_libretro.so'],
-    },
-    'retroarch-gambatte': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/gambatte_libretro.so'],
-    },
-    'retroarch-genesisplusgx': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/genesis_plus_gx_libretro.so'],
-    },
-    'retroarch-beetle-pce': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/mednafen_pce_fast_libretro.so'],
-    },
-    'retroarch-beetle-psx': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/mednafen_psx_libretro.so'],
-    },
-    'retroarch-beetle-vb': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/mednafen_vb_libretro.so'],
-    },
-    'retroarch-mgba': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/mgba_libretro.so'],
-    },
-    'retroarch-mupen64': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/mupen64plus_libretro.so'],
-    },
-    'retroarch-nestopia': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/nestopia_libretro.so'],
-    },
-    'retroarch-pico': {
-        'exe': 'retroarch',
-        'params': ['-L', '/usr/lib/libretro/picodrive_libretro.so'],
-    },
-    'dolphin': {
-        'exe': 'dolphin-emu',
-        'params': ['-e'],
-    },
+GAME_OVERRIDES = {
+    'high-accuracy': [
+        'snes/A.S.P. - Air Strike Patrol (USA)',
+    ],
 }
+
+def retroarch_launch(core):
+    return ['retroarch', '-L', '/usr/lib/x86_64-linux-gnu/libretro/%s_libretro.so' % core]
 
 def extensions():
     return map_reduce(SYSTEMS.iteritems(), lambda (name, meta): [(ext, name) for ext in meta['extensions']])
@@ -195,22 +172,15 @@ def match_system(rom):
             if in_romdir(sys, rom):
                 return sys
 
-def make_command(system, emu, meta, rom):
-    exe = meta.get('exe', emu)
-    params = meta.get('params', [])
-    params = map(lambda p: p % {'romdir': romdir(system)}, params)
-
-    if meta.get('compression_retarded'):
-        tmp = tempfile.mkdtemp()
-        subprocess.call(['unzip', rom, '-d', tmp])
-        rom = os.path.join(tmp, os.listdir(tmp)[0])
-
-    cmd = []
-    if meta.get('audio_lock'):
-        cmd.extend(['pasuspender', '--'])
-    cmd.extend(itertools.chain([exe], params, [rom]))
-    return cmd
-
+def make_command(launch, rom):
+    rom_id = os.path.splitext(os.path.relpath(os.path.abspath(rom), ROM_ROOT))[0]
+    rom_flags = map_reduce(GAME_OVERRIDES.iteritems(), lambda (k, vs): [(v, k) for v in vs], set).get(rom_id, set())
+    
+    cmd = launch(rom_flags)
+    if hasattr(cmd, '__call__'):
+        return cmd(rom)
+    else:
+        return cmd + [rom]
 
 def _log(msg):
     sys.stderr.write(msg + '\n')
@@ -223,8 +193,7 @@ if __name__ == "__main__":
     if not system:
         raise RuntimeError('could not determine system')
 
-    emulator = SYSTEMS[system]['emulator']
-    cmd = make_command(system, emulator, EMULATORS[emulator], rom)
+    cmd = make_command(SYSTEMS[system]['launch'], rom)
 
     _log('running: %s' % cmd)
     subprocess.call(cmd)
