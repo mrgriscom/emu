@@ -18,58 +18,58 @@ def snes_launch(flags):
 
 SYSTEMS = {
     '32x': {
-        'launch': lambda flags: retroarch_launch('picodrive'),
+        'launch': lambda _: retroarch_launch('picodrive'),
         'extensions': ['32x'],
         # core lacks multi-tap support
     },
     'fds': {
-        'launch': lambda flags: retroarch_launch('nestopia'),
+        'launch': lambda _: retroarch_launch('nestopia'),
         'extensions': ['fds'],
         # bios: disksys.rom
         # multitap: TODO
     },
     'gameboy': {
-        'launch': lambda flags: retroarch_launch('gambatte'),
+        'launch': lambda _: retroarch_launch('gambatte'),
         'extensions': ['gb'],
     },
     'gamegear': {
-        'launch': lambda flags: retroarch_launch('genesis_plus_gx'),
+        'launch': lambda _: retroarch_launch('genesis_plus_gx'),
         'extensions': ['gg'],
     },
     'gba': {
-        'launch': lambda flags: retroarch_launch('mgba'),
+        'launch': lambda _: retroarch_launch('mgba'),
         'extensions': ['gba'],
     },
     'gbc': {
-        'launch': lambda flags: retroarch_launch('gambatte'),
+        'launch': lambda _: retroarch_launch('gambatte'),
         'extensions': ['gbc'],
     },
     'genesis': {
-        'launch': lambda flags: retroarch_launch('genesis_plus_gx'),
+        'launch': lambda _: retroarch_launch('genesis_plus_gx'),
         'extensions': ['md'],
         # multitap: TODO
     },
     'mame': {
-        'launch': lambda flags: ['mame'],
+        'launch': lambda _: ['mame'],
         'extensions': [],
     },
     'n64': {
-        'launch': lambda flags: retroarch_launch('mupen64plus'),
+        'launch': lambda _: retroarch_launch('mupen64plus'),
         'extensions': ['n64'],
     },
     'nes': {
-        'launch': lambda flags: retroarch_launch('nestopia'),
+        'launch': lambda _: retroarch_launch('nestopia'),
         'extensions': ['nes'],
         # multitap: built-in, handled by NstDatabase.xml (in bios dir)
     },
     'psx': {
-        'launch': lambda flags: retroarch_launch('mednafen_psx'),
+        'launch': lambda _: retroarch_launch('mednafen_psx'),
         'extensions': ['cue', 'iso'],
         # bios: scph*.bin
         # multitap: TODO
     },
     'segacd': {
-        'launch': lambda flags: retroarch_launch('genesis_plus_gx'),
+        'launch': lambda _: retroarch_launch('genesis_plus_gx'),
         'extensions': ['cue', 'iso'],
         # bios: bios_CD_U.bin
         # multitap: TODO handled as with geneis?
@@ -81,20 +81,19 @@ SYSTEMS = {
         #   http://emulation.gametechwiki.com/index.php/Emulator_Files#Super_Famicom_.28SNES.29
         #   "SNES Coprocessor ROMs for bsnes"
         # multitap: TODO
-        # super gameboy: TODO
     },
     'turbografx': {
-        'launch': lambda flags: retroarch_launch('mednafen_pce_fast'),
+        'launch': lambda _: retroarch_launch('mednafen_pce_fast'),
         'extensions': ['pce'],
         # multitap: built-in
     },
     'virtualboy': {
-        'launch': lambda flags: retroarch_launch('mednafen_vb'),
+        'launch': lambda _: retroarch_launch('mednafen_vb'),
         'extensions': ['vb'],
         # sbs rendering handled via custom default shader setting
     },
     'wii': {
-        'launch': lambda flags: ['dolphin', '-e'],
+        'launch': lambda _: ['dolphin', '-e'],
         'extensions': ['wad'],
         # experimental
     },
