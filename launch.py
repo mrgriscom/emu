@@ -12,9 +12,13 @@ ROM_ROOT = '/home/drew/roms'
 
 def snes_launch(flags):
     core = 'bsnes_mercury_balanced'
+    config = {}
     if 'high-accuracy' in flags:
         core = 'bsnes_mercury_accuracy'
-    return retroarch_launch(core)
+    if 'multitap' in flags:
+        core = 'snes9x'  # bsnes multitap seems broken
+        config['input_libretro_device_p2'] = 257
+    return retroarch_launch(core, config)
 
 SYSTEMS = {
     '32x': {
@@ -103,10 +107,20 @@ GAME_OVERRIDES = {
     'high-accuracy': [
         'snes/A.S.P. - Air Strike Patrol (USA)',
     ],
+    'multitap': [
+        'snes/Super Bomberman (USA)',
+    ],
 }
 
-def retroarch_launch(core):
-    return ['retroarch', '-L', '/usr/lib/x86_64-linux-gnu/libretro/%s_libretro.so' % core]
+def retroarch_launch(core, custom_config={}):
+    cmd = ['retroarch', '-L', '/usr/lib/x86_64-linux-gnu/libretro/%s_libretro.so' % core]
+    if custom_config:
+        custom_config['config_save_on_exit'] = 'false'
+        configpath = tempfile.mktemp()
+        with open(configpath, 'w') as f:
+            f.write('\n'.join('%s = "%s"' % (k, v) for k, v in custom_config.iteritems()))
+        cmd.extend(['--appendconfig', configpath])
+    return cmd
 
 def extensions():
     return map_reduce(SYSTEMS.iteritems(), lambda (name, meta): [(ext, name) for ext in meta['extensions']])
