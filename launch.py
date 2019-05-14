@@ -109,6 +109,12 @@ GAME_OVERRIDES = {
     ],
     'multitap': [
         'snes/Super Bomberman (USA)',
+        'snes/Super Bomberman 2 (USA)',
+        'snes/Super Bomberman 3 (Europe)',
+        'snes/Super Bomber Man 4 (Japan)',
+        'snes/Super Bomber Man 5 (Japan)',
+        'snes/Super Bomber Man - Panic Bomber W (Japan)',
+        'snes/Top Gear 3000 (USA)',
     ],
 }
 
